@@ -1,0 +1,245 @@
+/* ═══════════════════════════════════════════════════
+   BOTPRESS WEBCHAT COMPONENT OVERRIDES
+   ═══════════════════════════════════════════════════ */
+
+/* Strip default container chrome */
+.bpContainer {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hide header */
+.bpHeaderContainer {
+  display: none !important;
+}
+
+/* ── CSS variables for Botpress design system ───── */
+
+:root .bpReset {
+  --bpGray-1:   transparent !important;
+  --bpGray-50:  rgba(232, 213, 176, 0.04) !important;
+  --bpGray-100: rgba(232, 213, 176, 0.08) !important;
+  --bpGray-200: rgba(200, 150, 46, 0.2)   !important;
+  --bpGray-300: rgba(200, 150, 46, 0.32)  !important;
+  --bpGray-400: #8b7355 !important;
+  --bpGray-500: #a08968 !important;
+  --bpGray-600: #c4a97a !important;
+  --bpGray-700: #d4ba8a !important;
+  --bpGray-800: #e0ccaa !important;
+  --bpGray-900: #e8d5b0 !important;
+  --bpGray-950: #f0e0c0 !important;
+
+  font-family: 'EB Garamond', Georgia, serif !important;
+  color-scheme: dark !important;
+}
+
+/* ── Message list ─────────────────────────────── */
+
+.bpMessageListViewport,
+.bpComposerContainer {
+  max-width: 740px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+/* Hide in empty/loading states */
+.bpMessageListContainer {
+  visibility: hidden !important;
+}
+
+.has-messages .bpMessageListContainer {
+  visibility: visible !important;
+  padding-bottom: 110px !important;
+}
+
+/* Top fade gradient when scrolling */
+.has-messages .bpMessageListContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.empty-state .bpMessageListContainer {
+  visibility: hidden !important;
+}
+
+/* ── Message bubbles ──────────────────────────── */
+
+/* Bot messages — printed book text, no bubble */
+.bpMessageBlocksBubble[data-direction="incoming"] {
+  background: transparent !important;
+  border: none !important;
+  padding-left: 0 !important;
+  max-width: 100% !important;
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: var(--parchment) !important;
+  line-height: 1.75 !important;
+}
+
+/* User messages — warm parchment card */
+.bpMessageBlocksBubble[data-direction="outgoing"] {
+  background: rgba(232, 213, 176, 0.065) !important;
+  border: 1px solid rgba(200, 150, 46, 0.18) !important;
+  color: var(--parchment-mid) !important;
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  border-radius: 3px !important;
+}
+
+/* Message row spacing */
+.bpMessageContainer {
+  margin-bottom: 28px !important;
+}
+
+.bpMessageBlocksRow {
+  padding: 4px 0 !important;
+}
+
+/* Hide avatars */
+.bpMessageAvatarContainer {
+  display: none !important;
+}
+
+/* ── Typing indicator ─────────────────────────── */
+
+.bpTypingIndicatorContainer {
+  background: transparent !important;
+  padding-left: 0 !important;
+}
+
+/* ── Composer ─────────────────────────────────── */
+
+.bpComposerContainer {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: 740px !important;
+  width: calc(100% - 48px) !important;
+  background: rgba(13, 11, 8, 0.88) !important;
+  border: 1px solid rgba(200, 150, 46, 0.18) !important;
+  border-radius: 4px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  transition:
+    top 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    bottom 0.42s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Empty state — center composer */
+.empty-state .bpComposerContainer {
+  top: calc(50% + 20px) !important;
+  bottom: auto !important;
+}
+
+/* Has messages — anchor to bottom */
+.has-messages .bpComposerContainer {
+  bottom: 34px !important;
+  top: auto !important;
+}
+
+/* Hide loading composer */
+.is-loading .bpComposerContainer,
+.is-loading .new-chat-btn {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.is-loading .bpMessageListContainer {
+  visibility: hidden !important;
+}
+
+/* Composer textarea */
+.bpComposerContainer textarea {
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  color: var(--parchment) !important;
+  background: transparent !important;
+  caret-color: var(--gold) !important;
+}
+
+.bpComposerContainer textarea::placeholder {
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  color: var(--parchment-dim) !important;
+  opacity: 0.65 !important;
+}
+
+/* Send button */
+.bpComposerSendButton,
+.bpComposerSendButton svg {
+  color: var(--gold) !important;
+}
+
+/* Hide composer footer & marquee */
+.bpComposerFooter          { display: none !important; }
+.bpMessageListMarqueeContainer { visibility: hidden !important; }
+
+/* File attachment background */
+.bpComposerFileAttachement {
+  background-color: var(--ink-raised) !important;
+}
+
+/* ── Choice / quick reply buttons ────────────── */
+
+.bpMessageBlocksButton {
+  font-family: 'EB Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 15px !important;
+  color: var(--parchment-mid) !important;
+  background: rgba(232, 213, 176, 0.04) !important;
+  border: 1px solid rgba(200, 150, 46, 0.18) !important;
+  border-radius: 2px !important;
+  transition: all 0.2s ease !important;
+}
+
+.bpMessageBlocksButton:hover {
+  color: var(--parchment) !important;
+  background: rgba(200, 150, 46, 0.08) !important;
+  border-color: rgba(200, 150, 46, 0.32) !important;
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
+
+.bpMessageListViewport {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 150, 46, 0.18) transparent;
+}
+
+.bpMessageListViewport::-webkit-scrollbar { width: 4px; }
+.bpMessageListViewport::-webkit-scrollbar-track  { background: transparent; }
+.bpMessageListViewport::-webkit-scrollbar-thumb  { background: rgba(200, 150, 46, 0.2); border-radius: 2px; }
+.bpMessageListViewport::-webkit-scrollbar-thumb:hover { background: rgba(200, 150, 46, 0.35); }
+
+/* ── Mobile ────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .empty-state .bpComposerContainer {
+    left: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+    width: calc(100% - 32px) !important;
+  }
+
+  .has-messages .bpComposerContainer {
+    left: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+    width: calc(100% - 32px) !important;
+    bottom: 24px !important;
+  }
+}

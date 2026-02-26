@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "adk": {
+      "source": "botpress/skills",
+      "sourceType": "github",
+      "computedHash": "ac12e6c84be9de2ba04a7de0336b73955c4a8712955160d56857199709413b0f"
+    }
+  }
+}
