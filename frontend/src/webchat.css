@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   BOTPRESS WEBCHAT COMPONENT OVERRIDES
+   BOTPRESS WEBCHAT OVERRIDES — PIXEL / FUTURISTIC BLUE
    ═══════════════════════════════════════════════════ */
 
 /* Strip default container chrome */
@@ -15,23 +15,23 @@
   display: none !important;
 }
 
-/* ── CSS variables for Botpress design system ───── */
+/* ── CSS Variables ─────────────────────────────── */
 
 :root .bpReset {
   --bpGray-1:   transparent !important;
-  --bpGray-50:  rgba(232, 213, 176, 0.04) !important;
-  --bpGray-100: rgba(232, 213, 176, 0.08) !important;
-  --bpGray-200: rgba(200, 150, 46, 0.2)   !important;
-  --bpGray-300: rgba(200, 150, 46, 0.32)  !important;
-  --bpGray-400: #8b7355 !important;
-  --bpGray-500: #a08968 !important;
-  --bpGray-600: #c4a97a !important;
-  --bpGray-700: #d4ba8a !important;
-  --bpGray-800: #e0ccaa !important;
-  --bpGray-900: #e8d5b0 !important;
-  --bpGray-950: #f0e0c0 !important;
+  --bpGray-50:  rgba(0, 212, 255, 0.03)  !important;
+  --bpGray-100: rgba(0, 212, 255, 0.07)  !important;
+  --bpGray-200: rgba(0, 212, 255, 0.18)  !important;
+  --bpGray-300: rgba(0, 212, 255, 0.32)  !important;
+  --bpGray-400: #2a4d5e !important;
+  --bpGray-500: #3a6a7e !important;
+  --bpGray-600: #5a8fa8 !important;
+  --bpGray-700: #7ab0c8 !important;
+  --bpGray-800: #a0cce0 !important;
+  --bpGray-900: #c0e8ff !important;
+  --bpGray-950: #e0f4ff !important;
 
-  font-family: 'EB Garamond', Georgia, serif !important;
+  font-family: 'Share Tech Mono', 'Courier New', monospace !important;
   color-scheme: dark !important;
 }
 
@@ -39,13 +39,12 @@
 
 .bpMessageListViewport,
 .bpComposerContainer {
-  max-width: 740px !important;
+  max-width: 760px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100% !important;
 }
 
-/* Hide in empty/loading states */
 .bpMessageListContainer {
   visibility: hidden !important;
 }
@@ -55,15 +54,13 @@
   padding-bottom: 110px !important;
 }
 
-/* Top fade gradient when scrolling */
+/* Top fade */
 .has-messages .bpMessageListContainer::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 130px;
-  background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, #020912 0%, transparent 100%);
   pointer-events: none;
   z-index: 10;
 }
@@ -74,37 +71,39 @@
 
 /* ── Message bubbles ──────────────────────────── */
 
-/* Bot messages — printed book text, no bubble */
+/* Bot messages — terminal output style */
 .bpMessageBlocksBubble[data-direction="incoming"] {
   background: transparent !important;
   border: none !important;
-  padding-left: 0 !important;
+  border-left: 2px solid rgba(0, 212, 255, 0.35) !important;
+  padding-left: 14px !important;
   max-width: 100% !important;
-  font-family: 'EB Garamond', Georgia, serif !important;
-  font-size: 18px !important;
-  font-weight: 400 !important;
-  color: var(--parchment) !important;
-  line-height: 1.75 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 16px !important;
+  color: #c0e8ff !important;
+  line-height: 1.7 !important;
+  border-radius: 0 !important;
 }
 
-/* User messages — warm parchment card */
+/* User messages — blue panel */
 .bpMessageBlocksBubble[data-direction="outgoing"] {
-  background: rgba(232, 213, 176, 0.065) !important;
-  border: 1px solid rgba(200, 150, 46, 0.18) !important;
-  color: var(--parchment-mid) !important;
-  font-family: 'EB Garamond', Georgia, serif !important;
-  font-size: 17px !important;
-  line-height: 1.65 !important;
-  border-radius: 3px !important;
+  background: rgba(0, 87, 231, 0.12) !important;
+  border: 1px solid rgba(0, 212, 255, 0.25) !important;
+  color: rgba(0, 212, 255, 0.85) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 12px rgba(0, 87, 231, 0.2), 4px 4px 0 rgba(0, 212, 255, 0.06) !important;
 }
 
-/* Message row spacing */
+/* Message spacing */
 .bpMessageContainer {
-  margin-bottom: 28px !important;
+  margin-bottom: 24px !important;
 }
 
 .bpMessageBlocksRow {
-  padding: 4px 0 !important;
+  padding: 3px 0 !important;
 }
 
 /* Hide avatars */
@@ -116,7 +115,8 @@
 
 .bpTypingIndicatorContainer {
   background: transparent !important;
-  padding-left: 0 !important;
+  padding-left: 14px !important;
+  border-left: 2px solid rgba(0, 212, 255, 0.35) !important;
 }
 
 /* ── Composer ─────────────────────────────────── */
@@ -125,32 +125,32 @@
   position: absolute !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  max-width: 740px !important;
+  max-width: 760px !important;
   width: calc(100% - 48px) !important;
-  background: rgba(13, 11, 8, 0.88) !important;
-  border: 1px solid rgba(200, 150, 46, 0.18) !important;
-  border-radius: 4px !important;
+  background: rgba(2, 9, 18, 0.92) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  border-radius: 0 !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  box-shadow:
+    0 0 20px rgba(0, 212, 255, 0.1),
+    4px 4px 0 rgba(0, 212, 255, 0.06),
+    inset 0 0 30px rgba(0, 87, 231, 0.04) !important;
   transition:
-    top 0.42s cubic-bezier(0.4, 0, 0.2, 1),
-    bottom 0.42s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    top 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    bottom 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Empty state — center composer */
 .empty-state .bpComposerContainer {
   top: calc(50% + 20px) !important;
   bottom: auto !important;
 }
 
-/* Has messages — anchor to bottom */
 .has-messages .bpComposerContainer {
-  bottom: 34px !important;
+  bottom: 32px !important;
   top: auto !important;
 }
 
-/* Hide loading composer */
 .is-loading .bpComposerContainer,
 .is-loading .new-chat-btn {
   opacity: 0 !important;
@@ -163,67 +163,80 @@
 
 /* Composer textarea */
 .bpComposerContainer textarea {
-  font-family: 'EB Garamond', Georgia, serif !important;
-  font-size: 17px !important;
-  font-style: italic !important;
-  color: var(--parchment) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 15px !important;
+  letter-spacing: 0.05em !important;
+  color: #c0e8ff !important;
   background: transparent !important;
-  caret-color: var(--gold) !important;
+  caret-color: #00d4ff !important;
+  text-transform: uppercase !important;
 }
 
 .bpComposerContainer textarea::placeholder {
-  font-family: 'EB Garamond', Georgia, serif !important;
-  font-size: 17px !important;
-  font-style: italic !important;
-  color: var(--parchment-dim) !important;
-  opacity: 0.65 !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 15px !important;
+  letter-spacing: 0.1em !important;
+  color: #2a4d5e !important;
+  opacity: 0.9 !important;
 }
 
 /* Send button */
 .bpComposerSendButton,
 .bpComposerSendButton svg {
-  color: var(--gold) !important;
+  color: #00d4ff !important;
 }
 
-/* Hide composer footer & marquee */
-.bpComposerFooter          { display: none !important; }
+/* Hide footer & marquee */
+.bpComposerFooter              { display: none !important; }
 .bpMessageListMarqueeContainer { visibility: hidden !important; }
 
-/* File attachment background */
+/* File attachment */
 .bpComposerFileAttachement {
-  background-color: var(--ink-raised) !important;
+  background-color: #040d1c !important;
 }
 
-/* ── Choice / quick reply buttons ────────────── */
+/* ── Quick reply buttons ──────────────────────── */
 
 .bpMessageBlocksButton {
-  font-family: 'EB Garamond', Georgia, serif !important;
-  font-style: italic !important;
-  font-size: 15px !important;
-  color: var(--parchment-mid) !important;
-  background: rgba(232, 213, 176, 0.04) !important;
-  border: 1px solid rgba(200, 150, 46, 0.18) !important;
-  border-radius: 2px !important;
-  transition: all 0.2s ease !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #5a8fa8 !important;
+  background: rgba(0, 212, 255, 0.03) !important;
+  border: 1px solid rgba(0, 212, 255, 0.22) !important;
+  border-radius: 0 !important;
+  transition: all 0.12s !important;
 }
 
 .bpMessageBlocksButton:hover {
-  color: var(--parchment) !important;
-  background: rgba(200, 150, 46, 0.08) !important;
-  border-color: rgba(200, 150, 46, 0.32) !important;
+  color: #00d4ff !important;
+  background: rgba(0, 212, 255, 0.08) !important;
+  border-color: rgba(0, 212, 255, 0.45) !important;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.15) !important;
 }
 
 /* ── Scrollbar ─────────────────────────────────── */
 
 .bpMessageListViewport {
   scrollbar-width: thin;
-  scrollbar-color: rgba(200, 150, 46, 0.18) transparent;
+  scrollbar-color: rgba(0, 212, 255, 0.2) transparent;
 }
 
-.bpMessageListViewport::-webkit-scrollbar { width: 4px; }
-.bpMessageListViewport::-webkit-scrollbar-track  { background: transparent; }
-.bpMessageListViewport::-webkit-scrollbar-thumb  { background: rgba(200, 150, 46, 0.2); border-radius: 2px; }
-.bpMessageListViewport::-webkit-scrollbar-thumb:hover { background: rgba(200, 150, 46, 0.35); }
+.bpMessageListViewport::-webkit-scrollbar       { width: 3px; }
+.bpMessageListViewport::-webkit-scrollbar-track { background: transparent; }
+.bpMessageListViewport::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.2); }
+.bpMessageListViewport::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.4); }
+
+/* ── Code blocks ──────────────────────────────── */
+
+.bpMessageBlocksTextCode {
+  background: rgba(0, 212, 255, 0.05) !important;
+  border: 1px solid rgba(0, 212, 255, 0.15) !important;
+  color: #00d4ff !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  border-radius: 0 !important;
+}
 
 /* ── Mobile ────────────────────────────────────── */
 
@@ -240,6 +253,6 @@
     right: 16px !important;
     transform: none !important;
     width: calc(100% - 32px) !important;
-    bottom: 24px !important;
+    bottom: 20px !important;
   }
 }

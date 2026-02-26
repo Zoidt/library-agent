@@ -1,7 +1,7 @@
 export const BOT_CONFIG = {
-  name: "Alexandria",
+  name: "ARCH1V3",
   avatar: "",
-  description: "Your scholarly library companion",
+  description: "Knowledge Base v2.0 — Neural Query Protocol Active",
 } as const;
 
 // Get your Client ID from Botpress Dashboard → Your Bot → Webchat → Client ID

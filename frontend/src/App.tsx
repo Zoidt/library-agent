@@ -13,11 +13,45 @@ import { BOT_CONFIG, CLIENT_ID } from "./config/constants";
 import { useEnrichedMessages } from "./hooks/useEnrichedMessages";
 
 const SUGGESTIONS = [
-  "Find me a book about ancient Rome",
-  "What are some must-read classics?",
-  "Recommend a mystery novel",
-  "Help me find books by Haruki Murakami",
+  "FIND_BOOK :: ancient rome",
+  "QUERY :: must-read classics",
+  "SCAN :: mystery novels",
+  "LOOKUP :: haruki murakami",
 ];
+
+// Pixel loading bar component
+function PixelLoader() {
+  const [progress, setProgress] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) { clearInterval(interval); return 100; }
+        return p + Math.floor(Math.random() * 8) + 2;
+      });
+    }, 120);
+    return () => clearInterval(interval);
+  }, []);
+
+  const blocks = Math.floor((progress / 100) * 20);
+
+  return (
+    <div className="loading-veil">
+      <div className="pixel-boot">
+        <div className="boot-logo">▣</div>
+        <div className="boot-title">LIBR4RY.EXE</div>
+        <div className="boot-line">INITIALIZING KNOWLEDGE BASE...</div>
+        <div className="boot-bar">
+          <span className="boot-bar-fill">
+            {"█".repeat(blocks)}
+            {"░".repeat(20 - blocks)}
+          </span>
+        </div>
+        <div className="boot-percent">{Math.min(progress, 100)}%</div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const { client, messages, isTyping, user, clientState, newConversation } =
@@ -36,7 +70,7 @@ function App() {
     return () => clearTimeout(t);
   }, []);
 
-  // Press "/" anywhere to focus the composer
+  // Press "/" to focus composer
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (
@@ -69,17 +103,18 @@ function App() {
 
   return (
     <div className="app-shell">
-      {/* Atmospheric background layers */}
-      <div className="bg-atmosphere" aria-hidden />
-      <div className="bg-grain" aria-hidden />
-      <div className="bg-spine" aria-hidden />
+      {/* Background layers */}
+      <div className="bg-void"     aria-hidden />
+      <div className="bg-grid"     aria-hidden />
+      <div className="bg-glow"     aria-hidden />
+      <div className="bg-scanlines" aria-hidden />
 
       <div className={`chat-wrapper ${chatClass}`}>
         <Container
           connected={clientState !== "disconnected"}
           style={{ width: "100%", height: "100%", display: "flex" }}
         >
-          {/* New conversation button */}
+          {/* New session button */}
           <button
             className="new-chat-btn"
             onClick={() => {
@@ -88,58 +123,41 @@ function App() {
                 (document.querySelector("textarea") as HTMLTextAreaElement | null)?.focus();
               }, 150);
             }}
-            title="Start new conversation"
           >
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
-            New
+            [ + NEW SESSION ]
           </button>
 
-          {/* Loading — candlelight */}
-          {isLoading && (
-            <div className="loading-veil">
-              <div className="candle-wrap">
-                <div className="candle-flame" />
-                <div className="candle-halo" />
-              </div>
-            </div>
-          )}
+          {/* Pixel boot loader */}
+          {isLoading && <PixelLoader />}
 
           {/* Empty state hero */}
           <div className="hero">
-            <span className="hero-ornament" aria-hidden="true">
-              ❦
-            </span>
-            <h1 className="hero-title">Alexandria</h1>
-            <div className="hero-rule" aria-hidden="true">
-              <span />
-              <span className="hero-rule-dot">✦</span>
-              <span />
+            <div className="hero-badge">◈ NEURAL ARCHIVE SYSTEM ◈</div>
+            <h1 className="hero-title" data-text="LIBR4RY.EXE">
+              LIBR4RY.EXE
+            </h1>
+            <div className="hero-divider">
+              ──────────────────────────────
             </div>
-            <p className="hero-tagline">{BOT_CONFIG.description}</p>
+            <p className="hero-status">
+              <span className="status-dot" aria-hidden="true">●</span>
+              {" KNOWLEDGE_BASE :: ONLINE"}
+            </p>
+            <p className="hero-sub">
+              {"> QUERY ANYTHING. FIND EVERYTHING."}
+            </p>
           </div>
 
-          {/* Suggestion prompts */}
+          {/* Suggestion menu */}
           <div className="suggestions">
-            {SUGGESTIONS.map((text) => (
+            {SUGGESTIONS.map((text, i) => (
               <button
                 key={text}
-                className="suggestion-pill"
+                className="suggestion-item"
+                style={{ animationDelay: `${i * 0.08}s` }}
                 onClick={() => sendMessage({ type: "text", text })}
               >
-                <span className="suggestion-chevron" aria-hidden="true">
-                  ›
-                </span>
+                <span className="suggestion-arrow" aria-hidden="true">►</span>
                 {text}
               </button>
             ))}
@@ -161,18 +179,23 @@ function App() {
             allowFileUpload={false}
             connected={clientState !== "disconnected"}
             sendMessage={sendMessage}
-            composerPlaceholder="Ask about books, authors, or recommendations…"
+            composerPlaceholder="ENTER QUERY..."
           />
         </Container>
 
-        <p className="page-footer">Powered by Botpress ADK</p>
+        <p className="page-footer">
+          <span className="footer-bracket">[</span>
+          {" BOTPRESS ADK "}
+          <span className="footer-bracket">]</span>
+          {" v2.0"}
+        </p>
       </div>
 
       <StylesheetProvider
-        radius={0.25}
-        fontFamily="EB Garamond"
+        radius={0}
+        fontFamily="Share Tech Mono"
         variant="solid"
-        color="#c8962e"
+        color="#00d4ff"
       />
     </div>
   );
