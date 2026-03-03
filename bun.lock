@@ -5,7 +5,7 @@
     "": {
       "name": "library-agent",
       "dependencies": {
-        "@botpress/runtime": "^1.15.2",
+        "@botpress/runtime": "^1.15.4",
       },
       "devDependencies": {
         "typescript": "^5.9.3",
@@ -77,7 +77,7 @@
 
     "@botpress/cognitive": ["@botpress/cognitive@0.3.14", "", { "dependencies": { "exponential-backoff": "^3.1.1", "nanoevents": "^9.1.0" } }, "sha512-CoRllzxDEVDQfi+ajGfIO9ZRxifI8O1q5uYPD7X8j7jcRTb04VcAiER7cRk7ybabSwvwIsp6odOKQ9iKxUBvTw=="],
 
-    "@botpress/runtime": ["@botpress/runtime@1.15.2", "", { "dependencies": { "@botpress/client": "^1.35.0", "@botpress/cognitive": "^0.3.14", "@botpress/sdk": "^5.4.3", "@botpress/zai": "^2.6.0", "@bpinternal/const": "^0.4.2", "@bpinternal/thicktoken": "^2.0.0", "@bpinternal/zui": "^1.3.3", "@opentelemetry/api": "^1.9.0", "@opentelemetry/context-async-hooks": "^2.2.0", "@opentelemetry/core": "^2.2.0", "@opentelemetry/instrumentation": "^0.208.0", "@opentelemetry/instrumentation-http": "^0.208.0", "@opentelemetry/resources": "^2.2.0", "@opentelemetry/sdk-trace-base": "^2.2.0", "@opentelemetry/sdk-trace-node": "^2.2.0", "@opentelemetry/semantic-conventions": "^1.38.0", "axios": "^1.13.2", "bytes": "^3.1.2", "dedent": "^1.7.1", "fast-safe-stringify": "^2.1.1", "fast-xml-parser": "^5.3.3", "glob": "^11.1.0", "llmz": "^0.0.54", "lodash": "^4.17.21", "ms": "^2.1.3", "object-sizeof": "^2.6.5", "p-limit": "^7.3.0", "pretty-bytes": "^7.0.1", "ulid": "^3.0.2", "undici": "^7.16.0" }, "peerDependencies": { "typescript": ">=4.5.0" } }, "sha512-MIG99rvnbyaiwblDM4YQi647w6WjPQuXuPjXIMMxQ9EMRAsxhOAtcqMhNbTR837qLwLFssNyutwVMfX5nOwhuQ=="],
+    "@botpress/runtime": ["@botpress/runtime@1.15.4", "", { "dependencies": { "@botpress/client": "^1.35.0", "@botpress/cognitive": "^0.3.14", "@botpress/sdk": "^5.4.3", "@botpress/zai": "^2.6.0", "@bpinternal/const": "^0.4.2", "@bpinternal/thicktoken": "^2.0.0", "@bpinternal/zui": "^1.3.3", "@opentelemetry/api": "^1.9.0", "@opentelemetry/context-async-hooks": "^2.2.0", "@opentelemetry/core": "^2.2.0", "@opentelemetry/instrumentation": "^0.208.0", "@opentelemetry/instrumentation-http": "^0.208.0", "@opentelemetry/resources": "^2.2.0", "@opentelemetry/sdk-trace-base": "^2.2.0", "@opentelemetry/sdk-trace-node": "^2.2.0", "@opentelemetry/semantic-conventions": "^1.38.0", "axios": "^1.13.2", "bytes": "^3.1.2", "dedent": "^1.7.1", "fast-safe-stringify": "^2.1.1", "fast-xml-parser": "^5.3.3", "glob": "^11.1.0", "llmz": "^0.0.54", "lodash": "^4.17.21", "ms": "^2.1.3", "object-sizeof": "^2.6.5", "p-limit": "^7.3.0", "pretty-bytes": "^7.0.1", "ulid": "^3.0.2", "undici": "^7.16.0" }, "peerDependencies": { "typescript": ">=4.5.0" } }, "sha512-AU4f4WlfhguzILvxoP/RKNABqqQgQ3lsHgcT+3pow06rczzxZq3b7woRA+iCLZaZQfsTlPlW9aOuAIBATUpA2A=="],
 
     "@botpress/sdk": ["@botpress/sdk@5.4.3", "", { "dependencies": { "@botpress/client": "1.35.0", "browser-or-node": "^2.1.1", "semver": "^7.3.8" }, "peerDependencies": { "@bpinternal/zui": "^1.3.3", "esbuild": "^0.16.12" }, "optionalPeers": ["esbuild"] }, "sha512-DF7q2dAt9fjDqb06lpUPgXcGxVJIziWf1s+toCJ9Qcnvwv4/ChWL77Que2opKnP8hqu+nmgjT2nNiYGKLN25Wg=="],
 
